@@ -3,6 +3,10 @@
   <persistence-unit name="Proyecto_2.0PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Entidades.Provider</class>
+    <class>Entidades.Product</class>
+    <class>Entidades.Category</class>
+    <class>Entidades.Saleitem</class>
+    <class>Entidades.Sale</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/proyecto2?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
