@@ -19,31 +19,10 @@ public class Proyecto_20 {
     public static void main(String[] args) {
     
         
-        // Provider
-//    Inicio i = new Inicio();    
-//      i.setVisible(true);
-//      
-      
-      // Product 
-//      Inicio_Product i = new Inicio_Product();
-//      i.setVisible(true);
-//      
-      
 
-// Category
-// Inicio_Category i = new Inicio_Category();
-// i.setVisible(true);
-
-
-// SaleItem
-//Inicio_SaleItem i = new Inicio_SaleItem();
-//i.setVisible(true);
-
-
-// Sale
-Inicio_Sale i = new Inicio_Sale();
-i.setVisible(true);
-
+//Menu
+Menu m = new Menu();
+m.setVisible(true);
    
    
     }

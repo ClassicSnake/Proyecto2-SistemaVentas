@@ -6,14 +6,18 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -46,6 +50,35 @@ public class Sale implements Serializable {
     @Column(name = "total")
     private Float total;
 
+    
+    @OneToMany(mappedBy = "sale")
+    private List <Saleitem> Saleitems;
+    
+
+    public List<Saleitem> getSaleitems() {
+        return Saleitems;
+    }
+
+    public void setSaleitems(List<Saleitem> Saleitems) {
+        this.Saleitems = Saleitems;
+    }
+
+    
+  @ManyToOne
+ @JoinColumn(name = "idcustomer")
+ private Customer customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+  
+  
+    
     public Sale() {
     }
 

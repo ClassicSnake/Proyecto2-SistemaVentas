@@ -5,8 +5,10 @@
  */
 package proyecto_2.pkg0;
 
+import Controladores.CustomerJpaController;
 import Controladores.ProviderJpaController;
 import Controladores.SaleJpaController;
+import Entidades.Customer;
 import Entidades.Provider;
 import Entidades.Sale;
 import java.util.List;
@@ -22,6 +24,9 @@ public class Inicio_Sale extends javax.swing.JFrame {
     
     SaleJpaController CSales = new SaleJpaController();
     Sale sEdit;
+    
+    CustomerJpaController CCustomers = new CustomerJpaController();
+    Customer cEdit;
     /**
      * Creates new form Inicio
      */
@@ -38,16 +43,17 @@ public class Inicio_Sale extends javax.swing.JFrame {
             modelo2 = (new DefaultTableModel(
                     null, new String[]{
                         "idSale", "date",
-                        "discount", "total"}) {
+                        "discount", "total","idcustomer"}) {
                 Class[] types = new Class[]{
                     java.lang.Integer.class,
                     java.lang.String.class,
                     java.lang.Float.class,
-                    java.lang.Float.class
+                    java.lang.Float.class,
+                    java.lang.Integer.class
                    
                 };
                 boolean[] canEdit = new boolean[]{
-                    false, false, false, false
+                    false, false, false, false, false
                 };
 
                 @Override
@@ -73,6 +79,7 @@ public class Inicio_Sale extends javax.swing.JFrame {
             Object O[]=null;
             
             List<Sale> listS = CSales.findSaleEntities();
+            List <Customer> listC = CCustomers.findCustomerEntities();
             
             for (int i = 0; i < listS.size(); i++){
             modelo2.addRow(O);
@@ -80,6 +87,8 @@ public class Inicio_Sale extends javax.swing.JFrame {
             modelo2.setValueAt(listS.get(i).getDate(), i, 1);
             modelo2.setValueAt(listS.get(i).getDiscount(), i, 2);
             modelo2.setValueAt(listS.get(i).getTotal(), i, 3);
+            modelo2.setValueAt(listC.get(i).getIdcustomer(), i, 4);
+            
      
 
         

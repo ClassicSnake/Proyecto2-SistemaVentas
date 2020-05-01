@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -46,6 +48,34 @@ public class Saleitem implements Serializable {
     @Column(name = "total")
     private Float total;
 
+ @ManyToOne
+@JoinColumn(name = "idproduct")
+private Product product;
+
+ public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+ 
+    
+    @ManyToOne
+    @JoinColumn(name = "idSale")
+    private Sale sale;
+
+    public Sale getSale() {
+        return sale;
+    }
+
+    public void setSale(Sale sale) {
+        this.sale = sale;
+    }
+
+ 
+    
+    
     public Saleitem() {
     }
 

@@ -36,8 +36,7 @@ public class Inicio extends javax.swing.JFrame {
             modelo2 = (new DefaultTableModel(
                     null, new String[]{
                         "idProvider", "name",
-                        "address", "phone",
-                    "website"}) {
+                        "address", "phone","website"}) {
                 Class[] types = new Class[]{
                     java.lang.Integer.class,
                     java.lang.String.class,
@@ -80,6 +79,9 @@ public class Inicio extends javax.swing.JFrame {
             modelo2.setValueAt(listP.get(i).getAddress(), i, 2);
             modelo2.setValueAt(listP.get(i).getPhone(), i, 3);
             modelo2.setValueAt(listP.get(i).getWebsite(), i, 4);
+                    
+                    
+                    
 
         
 
@@ -285,6 +287,7 @@ public class Inicio extends javax.swing.JFrame {
             p.setWebsite(txtWebsite.getText());
 
             CProviders.create(p);
+            Cargar_Informacion();
             JOptionPane.showMessageDialog(null,"Los datos se guardaron con éxito!");
          
 
@@ -301,9 +304,8 @@ public class Inicio extends javax.swing.JFrame {
 // TODO add your handling code here:
 try {
             Provider p = (Provider) tabla.getValueAt(tabla.getSelectedRow(), 0);
-
-            CProviders.destroy(p.getIdProvider());
-            Cargar_Informacion();
+           CProviders.destroy(p.getIdProvider());
+          
             JOptionPane.showMessageDialog(null, "El registro ha sido eliminado!");
          
         } catch (Exception e) {

@@ -6,14 +6,19 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -45,7 +50,52 @@ public class Product implements Serializable {
     private Float price;
     @Column(name = "stock")
     private Integer stock;
+   
+   
+    
+    
+    
+    @ManyToOne
+    @JoinColumn(name = "idProvider")
+    private Provider provider;
 
+    public Provider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "idcategory")
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+    
+    @OneToMany(mappedBy = "product")
+    private List<Saleitem> Saleitems;
+
+    public List<Saleitem> getSaleitems() {
+        return Saleitems;
+    }
+
+    public void setSaleitems(List<Saleitem> Saleitems) {
+        this.Saleitems = Saleitems;
+    }
+
+    
+
+
+
+//   
+    
     public Product() {
     }
 

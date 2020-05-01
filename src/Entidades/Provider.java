@@ -6,12 +6,19 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -33,6 +40,7 @@ public class Provider implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idProvider")
     private Integer idProvider;
@@ -44,8 +52,24 @@ public class Provider implements Serializable {
     private String phone;
     @Column(name = "website")
     private String website;
+    
+    @OneToMany(mappedBy = "provider")
+    private List <Product> productos;
 
+    public List<Product> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Product> productos) {
+        this.productos = productos;
+    }
+    
+
+    
+ 
     public Provider() {
+  
+    
     }
 
     public Provider(Integer idProvider) {
